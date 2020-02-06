@@ -1,26 +1,30 @@
-const books = [
+const products = [
   {
-    title: 'Harry Potter and the Chamber of Secrets',
-    author: 'J.K. Rowling',
+    id: "1",
+    title: 'Robe',
+    price: 10.99,
+    size: 'S',
   },
   {
-    title: 'Jurassic Park',
-    author: 'Michael Crichton',
-  },
-];
-
-const authors = [
-  {
-    name: 'J.K. Rowling',
+    id: "2",
+    title: 'Pantalon',
+    price: 9.99,
+    size: 'S',
   },
   {
-    name: 'Michael Crichton',
+    id: "5",
+    title: 'Veste',
+    price: 15.99,
+    size: 'S',
   },
 ];
 
 export default {
   Query: {
-    books: () => books,
-    authors: () => authors,
+    products: () => products,
+    productById: (parent, { id }, context, info) =>
+      products.find(product => {
+        return product.id === id ? product : null;
+      }),
   },
 };
